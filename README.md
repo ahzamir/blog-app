@@ -1,50 +1,37 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+## Blog on Rails
 
-> Description the project.
+> Blog on Rails is a classic example of a blog website. You can show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
+## Schema
+![](https://github.com/microverseinc/curriculum-rails/blob/main/blog-app/images/blog_app_erd.png)
 
-## Built With 
+## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available) 💻
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby
+- Ruby on Rails
+- PostgreSQL
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
+
+1- Copy this link `https://github.com/ahzamir/blog-app.git` <br>
+2- Get the directory that you want to clone the repository. <br>
+3- Open the command prompt in this directory. <br>
+4- Write `git clone https://github.com/ahzamir/blog-app.git` <br>
+5- Go to the repository folder in your command prompt `cd blog-app`. <br>
+6- Go to command line and run `rails s`.
+
+To setup linters on your local environment, please follow these steps.
+
+1- Run `bundle install`.
+2- Run `rubocop .` for the errors.
 
 ### Prerequisites
 
-You must have a browser on your device, visual code, a git version, [node.js](https://nodejs.org/en/) installed in your device and clone the repo from GitHub and follow the steps below.
-
-### Setup
-
-Clone the repository from GitHub, open the project folder, inside the project direcory open the commanline or Terminal and install the dependicies.
-
-### Install
-
-inside the project direcory open the commanline or Terminal, run npm install to install all the dependicies.
-
-### Usage
-
-To use this project or app run npm start in the project directory and you will see the live serever open on youe browser.
-
-### Run tests
-
-For running tests inside the project directory run npm test in command line or Terminal.
-
-### Deployment
+IDE(VSCode etc.), WSL(for Windows OS), for linters RuboCop
 
 
 ## Authors

@@ -8,6 +8,6 @@ class Post < ApplicationRecord
   end
 
   def five_most_recent_comments
-    commentes.includes(:post).order(created_at: :desc).limit(5)
+    comments.includes(:post).order(created_at: :desc).limit(5)
   end
 end

@@ -5,6 +5,10 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
+  validates :title, presence: true, length: { maximum: 250 }
+
+
+
   def five_most_recent_comments
     comments.includes(:post).order(created_at: :desc).limit(5)
   end

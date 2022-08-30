@@ -28,5 +28,10 @@ RSpec.describe 'Users', type: :request do
             get ('/users/1')
             expect(response).to render_template('show')
         end
+
+        it 'renders the user' do
+            get ('/users/1')
+            expect(response.body).to include('User Profile')
+        end
     end
 end

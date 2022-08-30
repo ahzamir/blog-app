@@ -29,5 +29,9 @@ RSpec.describe "Posts", type: :request do
             expect(response).to render_template(:show)
         end
 
+        it "render the post" do
+            get ('/users/1/posts/1')
+            expect(response.body).to include('Post 1 Details')
+        end
     end
 end

@@ -11,5 +11,10 @@ RSpec.describe "Posts", type: :request do
             get ('/users/1/posts')
             expect(response).to render_template(:index)
         end
+
+        it "render the list of posts" do
+            get ('/users/1/posts')
+            expect(response.body).to include('User 1 Posts List')
+        end
     end
 end

@@ -11,5 +11,10 @@ RSpec.describe 'Users', type: :request do
             get users_path
             expect(response).to render_template('index')
         end
+
+        it 'renders the list of users' do
+            get users_path
+            expect(response.body).to include('Users List')
+        end
     end
 end

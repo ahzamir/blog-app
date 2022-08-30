@@ -17,4 +17,11 @@ RSpec.describe "Posts", type: :request do
             expect(response.body).to include('User 1 Posts List')
         end
     end
+
+    describe "GET /posts/:id" do
+        it "return a success response" do
+            get ('/users/1/posts/1')
+            expect(response).to have_http_status(200)
+        end
+    end
 end

@@ -7,13 +7,17 @@
     </p>
 </div>
 <% if @user.posts.any? %>
-    <ul>
+    <div>
         <% @user.posts.each do |post| %>
-            <li>
+            <div>
                 <h2>Post #<%= post.id %></h2>
                 <%= link_to post.title, user_post_path(@user, post) %>
                 <%= render 'shared/count-likes-comments', post: post %>
-            </li>
+            </div>
         <% end %>
-    </ul>
+    </div>
+<% else %>
+        <p>
+            This user has no posts.
+        </p>
 <% end %>

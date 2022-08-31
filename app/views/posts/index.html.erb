@@ -11,7 +11,7 @@
                 </p>
                 <%= render 'shared/count-likes-comments', post: post %>
             </div>
-            <%= render 'shared/list-comments', post: post%>
+            <%= render 'shared/five-recent-comments', comments: post.five_most_recent_comments %>
         <% end %>
     </div>
     <% else %>

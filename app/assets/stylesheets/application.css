@@ -68,3 +68,7 @@
     display: flex;
     justify-content: flex-end;
  }
+
+ .comments {
+    margin-bottom: 3rem;
+ }

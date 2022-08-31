@@ -1,1 +1,21 @@
-<h1>User 1 Posts List</h1>
+<h1>User Posts</h1>
+<%= render 'shared/user', user: @user %>
+<% if @posts.any? %>
+    <div>
+        <% @posts.each do |post| %>
+            <div class="border">
+                <h2>Post #<%= post.id %></h2>
+                <p><%= post.title %></p>
+                <p>
+                    <%= post.text %>
+                </p>
+                <%= render 'shared/count-likes-comments', post: post %>
+            </div>
+            <%= render 'shared/five-recent-comments', comments: post.five_most_recent_comments %>
+        <% end %>
+    </div>
+    <% else %>
+    <p>
+        No posts yet.
+    </p>
+<% end %>

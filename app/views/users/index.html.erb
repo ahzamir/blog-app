@@ -1,1 +1,14 @@
-<h1>Users Lists</h1>
+<h1>
+    Users List
+</h1>
+<% if @users.any? %>
+    <div>
+        <% @users.each do |user| %>
+            <%= render 'shared/user', user: user %>
+        <% end %>
+    </div>
+<% else %>
+    <p>
+        No users yet.
+    </p>
+<% end %>

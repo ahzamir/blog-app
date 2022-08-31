@@ -1,9 +1,5 @@
 <h1>User Posts</h1>
-<div>
-    <img src="<%= @user.photo %>" alt="<%= @user.name %>" />
-    <%= link_to @user.name, user_path(@user) %>
-    <%= link_to @user.posts.count, user_posts_path(@user) %>
-</div>
+<%= render 'shared/user', user: @user %>
 <% if @posts.any? %>
     <div>
         <% @posts.each do |post| %>
@@ -13,24 +9,9 @@
                 <p>
                     <%= post.text %>
                 </p>
-                <div>
-                    <p>
-                        Likes: <%= post.likes.count %> ❤️
-                    </p>
-                    <p>
-                        Comments: <%= post.comments.count %> 📝
-                    </p>
-                </div>
+                <%= render 'shared/count-likes-comments', post: post %>
             </div>
-            <ul>
-                <% post.comments.each do |comment| %>
-                    <li>
-                        <p>
-                            Comment #<%= comment.id %>: <%= comment.text %>
-                        </p>
-                    </li>
-                <% end %>
-            </ul>
+            <%= render 'shared/list-comments', post: post%>
         <% end %>
     </div>
     <% else %>

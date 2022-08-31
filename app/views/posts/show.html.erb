@@ -1,9 +1,7 @@
 <h1>Post #<%= @post.id %> Details</h1>
-<div>
+<div class="border">
     <h2>Post #<%= @post.id %> by <%= @user.name %></h2>
     <%= render 'shared/count-likes-comments', post: @post %>
-</div>
-<div>
     <h2><%= @post.title %></h2>
     <p><%= @post.text %></p>
 </div>

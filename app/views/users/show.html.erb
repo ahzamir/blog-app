@@ -10,7 +10,7 @@
 </div>
 <% if @user.posts.any? %>
     <div>
-        <% @user.posts.each do |post| %>
+        <% @user.three_most_recent_posts.each do |post| %>
             <div class="posts border">
                 <h2>Post #<%= post.id %></h2>
                 <%= link_to post.title, user_post_path(@user, post) %>

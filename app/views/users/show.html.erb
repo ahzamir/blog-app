@@ -1,7 +1,9 @@
 <h1>User Profile</h1>
 <%= render 'shared/user', user: @user %>
-<div>
-    Bio: 
+<div class="border">
+    <h2>
+        Bio
+    </h2>
     <p>
         <%= @user.bio %>
     </p>
@@ -9,9 +11,12 @@
 <% if @user.posts.any? %>
     <div>
         <% @user.posts.each do |post| %>
-            <div>
+            <div class="posts border">
                 <h2>Post #<%= post.id %></h2>
                 <%= link_to post.title, user_post_path(@user, post) %>
+                <p>
+                    <%= post.text %>
+                </p>
                 <%= render 'shared/count-likes-comments', post: post %>
             </div>
         <% end %>

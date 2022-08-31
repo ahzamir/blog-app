@@ -1,1 +1,24 @@
-<h1>Post 1 Details</h1>
+<h1>Post #<%= @post.id %> Details</h1>
+<div>
+    <h2>Post #<%= @post.id %> by <%= @user.name %></h2>
+    <p><%= @post.likes.count %> ❤️</p>
+    <p><%= @post.comments.count %> 📝</p>
+</div>
+<div>
+    <h2><%= @post.title %></h2>
+    <p><%= @post.text %></p>
+</div>
+<div>
+    <h2>Comments</h2>
+    <ul>
+        <% @post.comments.each do |comment| %>
+            <li>
+                <p>
+                    Comment #<%= comment.id %>: <%= comment.text %>
+                </p>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+

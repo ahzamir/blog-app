@@ -1,0 +1,5 @@
+<div>
+    <img src="<%= user.photo %>" alt="<%= user.name %>" />
+    <%= link_to user.name, user_path(user) %>
+    <%= link_to user.posts.count, user_posts_path(user) %>
+</div>

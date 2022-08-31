@@ -2,15 +2,11 @@
     Users List
 </h1>
 <% if @users.any? %>
-    <ul>
+    <div>
         <% @users.each do |user| %>
-            <li>
-                <img src="<%= user.photo %>" alt="<%= user.name %>" />
-                <%= link_to user.name, user_path(user) %>
-                <%= link_to user.posts.count, user_posts_path(user) %>
-            </li>
+            <%= render 'shared/user', user: user %>
         <% end %>
-    </ul>
+    </div>
 <% else %>
     <p>
         No users yet.

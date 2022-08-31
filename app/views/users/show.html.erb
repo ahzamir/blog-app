@@ -1,9 +1,5 @@
 <h1>User Profile</h1>
-<div>
-    <img src="<%= @user.photo %>" alt="<%= @user.name %>" />
-    <%= link_to @user.name, user_path(@user) %>
-    <%= link_to @user.posts.count, user_posts_path(@user) %>
-</div>
+<%= render 'shared/user', user: @user %>
 <div>
     Bio: 
     <p>
@@ -16,14 +12,7 @@
             <li>
                 <h2>Post #<%= post.id %></h2>
                 <%= link_to post.title, user_post_path(@user, post) %>
-                <div>
-                    <p>
-                        Comments: <%= post.comments.count %>
-                    </p>
-                    <p>
-                        Likes: <%= post.likes.count %>
-                    </p>
-                </div>
+                <%= render 'shared/count-likes-comments', post: post %>
             </li>
         <% end %>
     </ul>

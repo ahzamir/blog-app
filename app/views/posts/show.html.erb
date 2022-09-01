@@ -6,5 +6,22 @@
     <p><%= @post.text %></p>
 </div>
 <%= render 'shared/list-comments', post: @post %>
-
-
+<%= form_with model: @comment, url: comments_new_path do |form| %>
+    <div class="field">
+        <%= form.hidden_field :author_id, value: @post.author.id %>
+        <%= form.hidden_field :post_id, value: @post.id %>
+        <%= form.label :text %>
+        <%= form.text_area :text %>
+    </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
+<%= form_with model: @like, url: likes_new_path do |form| %>
+    <div class="field">
+        <%= form.hidden_field :post_id, value: @post.id %>
+    </div>
+    <div class="actions">
+        <%= form.submit "Like ♥️" %>
+    </div>
+<% end %>

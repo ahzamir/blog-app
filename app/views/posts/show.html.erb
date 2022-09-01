@@ -6,7 +6,7 @@
     <p><%= @post.text %></p>
 </div>
 <%= render 'shared/list-comments', post: @post %>
-<%= form_with model: @comment, url: post_comments_path(@post), local: true do |form| %>
+<%= form_with model: @comment, url: comments_new_path do |form| %>
     <div class="field">
         <%= form.hidden_field :author_id, value: @post.author.id %>
         <%= form.hidden_field :post_id, value: @post.id %>
@@ -16,5 +16,4 @@
     <div class="actions">
         <%= form.submit %>
     </div>
-
-
+<% end %>

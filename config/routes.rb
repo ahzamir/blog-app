@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/posts', to: 'posts#create'
   get '/comments/new', to: 'comments#new', as: 'new_comment'
   post '/comments/new', to: 'comments#create'
+  post '/likes/new', to: 'likes#create'
   # Defines the root path route ("/")
   # root "articles#index"
 end

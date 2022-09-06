@@ -1,37 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  # describe 'GET /posts' do
-  #   it 'return a success response' do
-  #     get('/users/1/posts')
-  #     expect(response).to have_http_status(200)
-  #   end
+  before(:all) do
+    @first_user = User.create(name: 'Integration test', photo: 'http://twitter.com', bio: 'test for User')
+    @post1 = Post.create(title: 'Rspec test 1', text: 'rspec test for post', author_id: @first_user.id)
+    @post2 = Post.create(title: 'Rspec test 2', text: 'rspec test for post', author_id: @first_user.id)
+    @post3 = Post.create(title: 'Rspec test 3', text: 'rspec test for post', author_id: @first_user.id)
+  end
 
-  #   it 'render the index template' do
-  #     get('/users/1/posts')
-  #     expect(response).to render_template(:index)
-  #   end
+  describe 'GET /posts' do
+    it 'return a success response' do
+      get user_posts_path(@first_user.id)
+      expect(response).to have_http_status(200)
+    end
 
-  #   it 'render the list of posts' do
-  #     get('/users/1/posts')
-  #     expect(response.body).to include('User 1 Posts List')
-  #   end
-  # end
+    it 'render the index template' do
+      get user_posts_path(@first_user.id)
+      expect(response).to render_template(:index)
+    end
 
-  # describe 'GET /posts/:id' do
-  #   it 'return a success response' do
-  #     get('/users/1/posts/1')
-  #     expect(response).to have_http_status(200)
-  #   end
+    it 'render the list of posts' do
+      get user_posts_path(@first_user.id)
+      expect(response.body).to include("User Posts")
+    end
+  end
 
-  #   it 'render the show template' do
-  #     get('/users/1/posts/1')
-  #     expect(response).to render_template(:show)
-  #   end
+  describe 'GET /posts/:id' do
+    it 'return a success response' do
+      get user_post_path(@first_user.id, @post1.id)
+      expect(response).to have_http_status(200)
+    end
 
-  #   it 'render the post' do
-  #     get('/users/1/posts/1')
-  #     expect(response.body).to include('Post 1 Details')
-  #   end
-  # end
+    it 'render the show template' do
+      get user_post_path(@first_user.id, @post1.id)
+      expect(response).to render_template(:show)
+    end
+
+    it 'render the post' do
+      get user_post_path(@first_user.id, @post1.id)
+      expect(response.body).to include("Post ##{@post1.id} Details")
+    end
+  end
 end

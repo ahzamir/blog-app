@@ -33,5 +33,35 @@ RSpec.feature "Users", type: :feature do
     end
   end
 
+  describe 'User show page test' do
+    scenario 'Should show the username ' do
+      visit user_path(@first_user)
+      expect(page).to have_content(@first_user.name)
+    end
+
+    scenario 'Should show the profile picture' do
+      visit user_path(@first_user)
+      expect(page).to have_selector("img[src='#{@first_user.photo}']")
+    end
+
+    scenario 'Should show the bio' do
+      visit user_path(@first_user)
+      expect(page).to have_content(@first_user.bio)
+    end
+
+    scenario 'Should show the list of three most recent posts' do
+      visit user_path(@first_user)
+      expect(page).to have_content(@post2.title)
+      expect(page).to have_content(@post3.title)
+      expect(page).to have_content(@post4.title)
+    end
+
+    scenario 'should redirect to post\'s page' do
+      visit user_path(@first_user)
+      click_on @post2.title
+      expect(page).to have_current_path(user_post_path(@first_user, @post2))
+    end
+  end
+
   
 end

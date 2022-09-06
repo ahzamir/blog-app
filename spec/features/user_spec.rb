@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+# rubocop:disable Metrics/BlockLength
+RSpec.feature 'Users', type: :feature do
   before(:all) do
     @first_user = User.create(name: 'Integration test', photo: 'http://twitter.com', bio: 'test for User')
     @post1 = Post.create(title: 'Rspec test 1', text: 'rspec test for post', author_id: @first_user.id)
@@ -62,6 +63,5 @@ RSpec.feature "Users", type: :feature do
       expect(page).to have_current_path(user_post_path(@first_user, @post2))
     end
   end
-
-  
 end
+# rubocop:enable Metrics/BlockLength

@@ -21,7 +21,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'render the list of posts' do
       get user_posts_path(@first_user.id)
-      expect(response.body).to include("User Posts")
+      expect(response.body).to include('User Posts')
     end
   end
 

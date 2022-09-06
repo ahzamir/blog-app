@@ -25,9 +25,9 @@ RSpec.feature "Posts", type: :feature do
         end
     
         scenario 'should redirect to post\'s page' do
-        visit "/users/#{@first_user.id}/posts"
+        visit "/users/#{@first_user.id}"
         click_on @post1.title
-        expect(page).to have_current_path("users/#{@first_user.id}/posts/#{@post1.id}")
+        expect(page).to have_current_path("/users/#{@first_user.id}/posts/#{@post1.id}")
         end
     end
 

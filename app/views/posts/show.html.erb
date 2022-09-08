@@ -4,16 +4,14 @@
     <%= render 'shared/count-likes-comments', post: @post %>
     <h2><%= @post.title %></h2>
     <p><%= @post.text %></p>
-    <%= link_to user_post_path(post.author_id, post.id), method: :delete do %>
-        <% if can? :destroy, post%>
-            <div class="text-danger" role='button'>
-                <%= fa_icon "trash"%>
-            </div>
+    <%= link_to user_post_path(@post.author_id, @post.id), method: :delete do %>
+        <% if can? :destroy, @post%>
+            <button class="btn btn-danger">Delete Post</button>
         <% end %>
     <% end %>
 </div>
 <%= render 'shared/list-comments', post: @post %>
-<%= form_with model: @comment, url: comments_new_path do |form| %>
+<%= form_with model: @comment, url: user_post_comments_path(@post.author_id, @post.id), method: :post do |form| %>
     <div class="field">
         <%= form.hidden_field :author_id, value: @post.author.id %>
         <%= form.hidden_field :post_id, value: @post.id %>
@@ -24,7 +22,7 @@
         <%= form.submit %>
     </div>
 <% end %>
-<%= form_with model: @like, url: likes_new_path do |form| %>
+<%= form_with model: @like, url: user_post_likes_path(@post.author_id, @post.id), method: :post do |form| %>
     <div class="field">
         <%= form.hidden_field :post_id, value: @post.id %>
     </div>

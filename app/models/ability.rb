@@ -9,8 +9,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :manage, :posts if user.role == 'author'
-      can :manage, :comments if user.role == 'author'
+      can :manage, Post, author: user
+      can :manage, Comment, author: user
     end
     # Define abilities for the user here. For example:
     #

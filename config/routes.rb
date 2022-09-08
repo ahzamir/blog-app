@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/comments/new', to: 'comments#new', as: 'new_comment'
   post '/comments/new', to: 'comments#create'
   post '/likes/new', to: 'likes#create'
+
+  root 'users#index'
   # Defines the root path route ("/")
   # root "articles#index"
 end

@@ -14,11 +14,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(title: params[:title], text: params[:post][:text], author_id: current_user.id)
-    if @post.save
-      redirect_to "/users/#{current_user.id}/posts"
+    if current_user
+      @post = current_user.posts.new(params[:id])
+      @post.title = params[:title]
+      @post.text = params[:text]
+      if @post.save
+        redirect_to user_posts_path, notice: 'Post was successfully created. ✅👍'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_user_session_path, notice: 'You need to sign in or sign up before continuing. 🙄'
     end
   end
+
 end

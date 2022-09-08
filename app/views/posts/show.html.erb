@@ -4,6 +4,13 @@
     <%= render 'shared/count-likes-comments', post: @post %>
     <h2><%= @post.title %></h2>
     <p><%= @post.text %></p>
+    <%= link_to user_post_path(post.author_id, post.id), method: :delete do %>
+        <% if can? :destroy, post%>
+            <div class="text-danger" role='button'>
+                <%= fa_icon "trash"%>
+            </div>
+        <% end %>
+    <% end %>
 </div>
 <%= render 'shared/list-comments', post: @post %>
 <%= form_with model: @comment, url: comments_new_path do |form| %>

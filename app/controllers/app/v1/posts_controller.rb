@@ -1,13 +1,16 @@
-class Api::PostsController < ApplicationController
-  before_action :authorize_request
+class Api::V1::PostsController < ApplicationController
+  before_action :set_post, only: %i[show]
 
   def index
-    @posts = Post.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+    @posts = Post.all
+  end
 
-    if @posts.empty?
-      render json: { error: 'No posts found' }, status: :not_found
-    else
-      render json: @posts, status: :ok
-    end
+  def show
+    @comments = @post.comments
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

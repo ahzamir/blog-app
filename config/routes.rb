@@ -20,4 +20,11 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # API route for authentication
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :authentications, only: :create
+    end
+  end
 end

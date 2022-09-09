@@ -32,9 +32,7 @@ class PostsController < ApplicationController
   def destroy
     selected_post = Post.find(params[:id])
     user = User.find(selected_post.author_id)
-    if selected_post.comments.any?
-      selected_post.comments.destroy_all
-    end
+    selected_post.comments.destroy_all if selected_post.comments.any?
     selected_post.destroy
     if user.save
       redirect_to user_posts_path, notice: 'Post was successfully deleted. ✅👍'

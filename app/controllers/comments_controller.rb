@@ -16,10 +16,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    authorize! :destroy, @comment
-    @comment.destroy
-    flash[:notice] = 'Comment was successfully deleted. ✅👍'
-    redirect_to user_post_path(params[:user_id], params[:post_id])
+    deleted_comment = Comment.find(params[:id])
+    post = Post.find(params[:post_id])
+    deleted_comment.destroy
+    if post.save
+      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: 'Comment was successfully deleted. ✅👍'
+    else
+      render :new, alert: 'An error has occurred while deleting the comment ⚠️'
+    end
   end
 end

@@ -4,11 +4,9 @@
     <%= render 'shared/count-likes-comments', post: @post %>
     <h2><%= @post.title %></h2>
     <p><%= @post.text %></p>
-    <%= link_to user_post_path(@post.author_id, @post.id), method: :delete do %>
-        <% if can? :destroy, @post%>
-            <button class="btn btn-danger">Delete Post</button>
-        <% end %>
-    <% end %>
+      <% if can? :destroy, @post%>
+        <%= button_to "Delete 🗑️", user_post_path(@user, @post), method: :delete, class: "btn btn-danger" %>
+      <% end %>
 </div>
 <%= render 'shared/list-comments', post: @post %>
 <%= form_with model: @comment, url: user_post_comments_path(@post.author_id, @post.id), method: :post do |form| %>

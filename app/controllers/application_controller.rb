@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   protect_from_forgery with: :null_session,
-                        if: proc { |c| c.request.format =~ %r{application/json} }
+                       if: proc { |c| c.request.format =~ %r{application/json} }
   protected
 
   def update_allowed_parameters

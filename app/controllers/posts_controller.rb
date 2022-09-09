@@ -30,10 +30,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    authorize! :destroy, @post
-    @post.destroy
-    flash[:notice] = 'Post was successfully deleted. ✅👍'
-    redirect_to user_posts_path
+    selected_post = Post.find(params[:id])
+    user = User.find(selected_post.author_id)
+    if selected_post.comments.any?
+      selected_post.comments.destroy_all
+    end
+    selected_post.destroy
+    if user.save
+      redirect_to user_posts_path, notice: 'Post was successfully deleted. ✅👍'
+    else
+      render :new, alert: 'An error has occurred while deleting the post'
+    end
   end
 end

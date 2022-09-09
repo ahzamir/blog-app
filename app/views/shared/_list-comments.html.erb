@@ -6,11 +6,10 @@
                 <p>
                     ➡️ #<%= comment.id %> by <%= comment.author.name %>: <%= comment.text %>
                 </p>
-                <% if can? :destroy, comment %>
-                    <%= link_to user_post_path(comment.post.author_id, comment.post.id), method: :delete do %>
-                        <button class="btn btn-danger">Delete Comment</button>
-                    <% end %>
-                <% end %>
+
+          <% if can? :destory, comment%>
+            <%= button_to "Delete 🗑️", user_post_comment_path(comment.author_id, comment.post_id, comment.id), method: :delete, class: "btn btn-danger" %>
+          <% end %>
             </div>
         <% end %>
     <% else %>

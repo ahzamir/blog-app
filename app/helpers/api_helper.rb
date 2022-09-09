@@ -1,4 +1,4 @@
-module ApiHelper
+module APIHelper
   class JsonWebToken
     SECRET_KEY = Rails.application.secrets.jwt_key.to_s
     def self.encode(payload)

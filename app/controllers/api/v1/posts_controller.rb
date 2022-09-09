@@ -1,5 +1,4 @@
 class API::V1::PostsController < ApplicationController
-  before_action :authorize_request
   before_action :set_post, only: %i[show]
 
   def index

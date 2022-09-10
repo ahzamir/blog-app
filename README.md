@@ -9,32 +9,90 @@
 
 ## Built With
 
-- Ruby
-- Ruby on Rails
-- PostgreSQL
+- [x] Programming Language: [Ruby](https://www.ruby-lang.org/en/)
+- [x] Framework: [Ruby on Rails](https://rubyonrails.org/)
+- [x] Linter: [Rubocop](https://rubocop.org/)
+- [x] Code Editor: [VS Code](https://code.visualstudio.com/)
+- [x] Database: [PostgreSQL](https://www.postgresql.org/)
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-1- Copy this link `https://github.com/ahzamir/blog-app.git` <br>
-2- Get the directory that you want to clone the repository. <br>
-3- Open the command prompt in this directory. <br>
-4- Write `git clone https://github.com/ahzamir/blog-app.git` <br>
-5- Go to the repository folder in your command prompt `cd blog-app`. <br>
-6- Go to command line and run `rails s`.
+### Install
 
-To setup linters on your local environment, please follow these steps.
+In the terminal, go to your file directory and run this command.
 
-1- Run `bundle install`.
-2- Run `rubocop .` for the errors.
+```
+$ git clone https://github.com/ahzamir/blog-app.git
+```
+
+### Usage
+
+```
+$ cd blog-app
+```
+```
+rails server
+```
+
+### Setup
+
+```
+bundle install
+```
+```
+rubocop .
+```
+
+### Run tests
+
+To install rspec, in the terminal kindly run this command
+
+```
+$ gem install rspec
+```
+
+To run tests, please run this command
+```
+$ rspec ./spec/#{filename}_spec.rb
+```
+
+### API Documentation
+
+Ypu can find the API documentation by:
+
+```
+$ rails server
+```
+
+Then go to this link: [http://localhost:3000/api-docs/index.html](http://localhost:3000/api-docs/index.html)
 
 ### Prerequisites
 
-IDE(VSCode etc.), WSL(for Windows OS), for linters RuboCop
+- [x] A web browser like [Google Chrome](https://www.google.com/chrome/).
+- [x] A code editor like [Visual Studio Code](https://code.visualstudio.com/).
+- [x] A terminal to run the code.
+- [x] [Ruby](https://www.ruby-lang.org/en/) installed on your computer.
+- [x] [Rails](https://rubyonrails.org/) installed on your computer.
 
+You can check if Git is installed by running the following command in the terminal.
+```
+$ git --version
+```
 
+Likewise for Ruby installation.
+```
+$ ruby --version && irb
+```
+
+To install rails, in the terminal kindly run this command
+```
+$ gem install rails
+```
 ## Authors
+
+👤 **Mavericks Balitaan** <img src="https://emojis.slackmojis.com/emojis/images/1531849430/4246/blob-sunglasses.gif?1531849430" width="20"/>
 
 - GitHub: [@ahzamir](https://github.com/ahzamir).
 - Twitter: [@YousufiZamir](https://twitter.com/YousufiZamir)
@@ -44,7 +102,7 @@ IDE(VSCode etc.), WSL(for Windows OS), for linters RuboCop
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/ahzamir/blog-app/issues).
 
 ## Show your support
 
@@ -52,10 +110,12 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- [Microverse](https://www.microverse.org/)
+- Code Reviewers
+- Coding Partners
 
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
+
+![](https://img.shields.io/badge/Microverse-blueviolet)

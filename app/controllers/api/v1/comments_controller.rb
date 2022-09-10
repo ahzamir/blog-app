@@ -3,7 +3,12 @@ class API::V1::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    render json: @comments
+    if @comments.present?
+      response = { status: 'Success', message: 'Comments found', data: @comments }
+      render json: response, status: :ok
+    else
+      render json: { error: 'No comments found' }, status: :not_found
+    end
   end
 
   def new
@@ -12,7 +17,12 @@ class API::V1::CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    render json: comment, status: 'Created' if comment.save
+    if comment.save
+      response = { status: 'Success', message: 'Comment created', data: comment }
+      render json: response, status: :created
+    else
+      render json: { error: 'Comment not created' }, status: :unprocessable_entity
+    end
   end
 
   private

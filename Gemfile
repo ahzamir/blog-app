@@ -76,3 +76,5 @@ end
 gem 'devise'
 
 gem 'cancancan'
+
+gem 'jwt', '~> 2.4'
